@@ -1,0 +1,15 @@
+{
+  "name": "fenwei-future",
+  "version": "1.0.0",
+  "private": true,
+  "description": "分微未来智能 AI 技术研发、企业培训与商业顾问官网",
+  "scripts": {
+    "start": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "check": "node --check catalog.js && node --check app.js",
+    "test": "node --test tests/site.test.cjs",
+    "build": "python3 scripts/package.py"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
