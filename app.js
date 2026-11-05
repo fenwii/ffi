@@ -230,6 +230,11 @@
       if (draft.version !== 1 || !draft.values || typeof draft.values !== 'object' || !Number.isFinite(draft.savedAt) || draft.savedAt > Date.now() || Date.now() - draft.savedAt > 7 * 86400000) {
         localStorage.removeItem(DRAFT_KEY); return null;
       }
+      // Restore renamed services without discarding the visitor's saved inquiry.
+      for (const service of catalog.filter(item => item.previousTitle)) {
+        if (draft.values.course === service.previousTitle) draft.values.course = service.title;
+        if (typeof draft.values.plan === 'string' && draft.values.plan.startsWith(`${service.previousTitle} · `)) draft.values.plan = service.plan;
+      }
       return draft;
     } catch { return null; }
   }

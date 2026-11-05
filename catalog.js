@@ -51,8 +51,9 @@ window.OpenAgixCatalog = [
     modules: ['明确区域资源与产业研究问题', '梳理产业趋势、场景和项目机会', '形成项目讨论与行动建议'], outcomes: ['约定主题的产业研究材料', '场景与机会清单', '项目研判与复盘建议'], preparation: '明确研究区域、关注产业、现有资源和使用目标。', boundary: '不包含当然的招商、融资、项目引进或政策结果承诺。' },
   { id: 'ceo-advisor', title: '一号位 AI 顾问', type: 'advisory', group: '商业顾问', price: '20–50 万元 / 年', plan: '一号位 AI 顾问 · 20–50 万元/年', audience: '希望把 AI 变化连接到企业经营决策的创始人与负责人',
     modules: ['对齐业务目标、资源和关键决策', '讨论 AI 战略、投入优先级与组织协作', '跟进关键行动并复盘实际反馈'], outcomes: ['议题与决策备忘', '阶段行动建议', '执行复盘记录'], preparation: '确认决策议题、沟通参与者、资料边界与合作频次。', boundary: '提供决策支持，经营决策与执行责任由双方按约定承担。' },
-  { id: 'native-value-advisor', title: '原生最值顾问', type: 'advisory', group: '商业顾问', price: '30 万元 / 年', plan: '原生最值顾问 · 30 万元/年', audience: '希望协同人、AI 与流程实现优先价值目标的企业',
-    modules: ['澄清希望优先实现的价值目标', '识别资源、流程和组织约束', '共创改进行动并以事实复盘'], outcomes: ['目标与约束清单', '组织流程共创建议', '阶段改进与复盘计划'], preparation: '共同定义“最值”目标、衡量口径和可投入资源。', boundary: '沿用业务名称，具体服务定义与评估口径在签约前明确。' },
+  // Keep the public ID stable so previously shared service links remain valid.
+  { id: 'native-value-advisor', title: '原生组织顾问', previousTitle: '原生最值顾问', type: 'advisory', group: '商业顾问', price: '30 万元 / 年', plan: '原生组织顾问 · 30 万元/年', audience: '希望建立 AI 原生组织、优化人机分工与管理机制的企业负责人及核心团队',
+    modules: ['诊断现有组织、岗位职责与关键业务流程', '共创人、智能体与系统的分工、权限和协作机制', '选择组织试点，建立执行、评估与复盘机制'], outcomes: ['组织与岗位职责设计草案', '人机协作流程与责任权限清单', '组织试点行动与阶段复盘计划'], preparation: '准备现有组织结构、关键岗位与业务流程，明确组织调整目标、参与负责人和可投入资源。', boundary: '年度顾问的服务频次、组织共创范围、工作成果及实施责任在合作前约定；单场培训与持续顾问服务分别确认。' },
   { id: 'conversion-advisor', title: '转化率顾问', type: 'advisory', group: '商业顾问', price: '按项目约定 2%–5%', plan: '转化率顾问 · 项目约定 2%–5%', audience: '有可追踪业务漏斗，愿意开展转化实验的团队',
     modules: ['梳理获客、咨询、成交与现有基线', '设计改进假设与可验证实验', '跟踪数据并复盘归因与结算证据'], outcomes: ['转化漏斗诊断', '实验与指标计划', '阶段数据复盘'], preparation: '确认数据来源、计费基数、基线、归因窗口、排除项及结算凭证。', boundary: '2%–5% 是待约定的项目计费比例，不代表转化提升幅度或收益保证。' }
 ];

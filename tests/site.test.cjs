@@ -167,6 +167,31 @@ test('explicit drafts restore after reload, delete preserves edits, expired draf
   assert.equal(await page.evaluate(() => localStorage.length), 0);
 });
 
+test('renamed organization advisory preserves shared links and migrates saved inquiries', async () => {
+  await page.goto(`${baseURL}/#service/native-value-advisor`);
+  assert.equal(await page.locator('#detail-title').textContent(), '原生组织顾问');
+  assert((await page.locator('#detail-modules').textContent()).includes('岗位职责'));
+  assert.equal(await page.locator('#detail-price').textContent(), '30 万元 / 年');
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => localStorage.setItem('openagix-inquiry-v1', JSON.stringify({
+    version: 1, savedAt: Date.now(), values: {
+      type: 'advisory', course: '原生最值顾问', plan: '原生最值顾问 · 30 万元/年',
+      company: '组织升级团队', goals: '梳理组织与人机协作机制', city: '长沙'
+    }
+  })));
+  await openInquiry();
+  await page.locator('#restore-draft').click();
+  assert.equal(await page.locator('[name="course"]').inputValue(), '原生组织顾问');
+  assert.equal(await page.locator('[name="plan"]').inputValue(), '原生组织顾问 · 30 万元/年');
+  assert.equal(await page.locator('[name="city"]').inputValue(), '长沙');
+  await generate();
+  const text = await page.locator('#brief-text').inputValue();
+  assert(text.includes('原生组织顾问'));
+  assert(!text.includes('原生最值顾问'));
+  const mail = new URL(await page.locator('#email-brief').getAttribute('href'));
+  assert.equal(mail.searchParams.get('body'), text);
+});
+
 test('blocked browser storage does not prevent finishing an inquiry', async () => {
   await page.evaluate(() => { Storage.prototype.setItem = () => { throw new Error('storage blocked'); }; });
   await openInquiry(); await fillRequired(); await page.locator('#save-draft').click();
