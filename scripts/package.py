@@ -1,5 +1,6 @@
 """Package only public website assets; never include drafts, tests or local config."""
 from pathlib import Path
+import shutil
 import sys
 from zipfile import ZIP_DEFLATED, ZipFile
 
@@ -14,4 +15,9 @@ output.parent.mkdir(parents=True, exist_ok=True)
 with ZipFile(output, 'w', ZIP_DEFLATED) as archive:
     for path in files:
         archive.write(path, path.relative_to(root))
+if len(sys.argv) == 1:
+    for path in files:
+        destination = output.parent / path.relative_to(root)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, destination)
 print(f'Packaged {len(files)} public files: {output}')

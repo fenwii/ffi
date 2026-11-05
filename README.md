@@ -63,7 +63,7 @@ npm run build
 python3 scripts/package.py /workspace/openagix-website.zip
 ```
 
-部署包仅含公开静态资源与说明，不含测试、开发依赖或本设备草稿。构建默认输出 `dist/openagix-website.zip`。
+部署包仅含公开静态资源与说明，不含测试、开发依赖或本设备草稿。`npm run build` 默认在 `dist/` 中生成静态网站文件和 `openagix-website.zip`，可直接用于 Vercel 部署；指定 ZIP 路径时仍仅生成部署包。
 
 将部署包解压到静态网站托管服务。发布目录为解压根目录，无构建或运行依赖；务必包含新增的 `catalog.js`。绑定 `openagix.com` 后，按照托管服务提供的 DNS 记录在 Dynadot 配置并启用 HTTPS。
 
